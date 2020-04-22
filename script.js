@@ -44,6 +44,26 @@ function timeStart(){
     //if answer === "true" next question
     //else subtract time
 
+var questions = [
+    {displayQuestion: "a",
+    answerTrue: "b",
+    answerFalse: "c",
+    answerFalse: "d",
+    answerFalse: "e",},
+
+    {displayQuestion: "a",
+    answerTrue: "b",
+    answerFalse: "c",
+    answerFalse: "d",
+    answerFalse: "e",},
+
+    {displayQuestion: "a",
+    answerTrue: "b",
+    answerFalse: "c",
+    answerFalse: "d",
+    answerFalse: "e",}
+]
+
 //when the user clicks the answer
     //validates whether the answer is correct
     //false answers deduct time from the clock
