@@ -1,10 +1,10 @@
 var question = document.getElementById("question");
-    answer = document.getElementById("answers");
-    timeLeft = document.getElementById("timer");
-    startButton = document.getElementById("start-button");
-    totalTime = 75;
-    elapsedTime = 0;
-
+var answer = document.getElementById("answers");
+var timeLeft = document.getElementById("timer");
+var startButton = document.getElementById("start-button");
+var totalTime = 76;
+var elapsedTime = 0;    
+var myInterval;
 
 //user clicks the start button
     //click event for start button which starts the quiz, prompts the first question and disappears when the quiz begins
@@ -12,7 +12,7 @@ var question = document.getElementById("question");
     //start button reappears after the quiz is over
 
 startButton.addEventListener("click", function(){
-    console.log("click");
+    this.style.display = "none";
     timeStart();
 });
 
@@ -24,7 +24,6 @@ startButton.addEventListener("click", function(){
     //when timer reaches zero, game ends
 
 function decreaseTimer (){
-    console.log("butt")
     if (totalTime > 0){
         totalTime-=1;
     }else{
@@ -34,10 +33,9 @@ function decreaseTimer (){
 }
 
 function timeStart(){
-
-    setInterval(decreaseTimer, 1000);
+   myInterval = setInterval(decreaseTimer, 1000);
+   decreaseTimer();
 }
-
 
 //questions and answers
     //questions in an array
@@ -45,8 +43,6 @@ function timeStart(){
     //if/else conditional for answers
     //if answer === "true" next question
     //else subtract time
-
-    
 
 //when the user clicks the answer
     //validates whether the answer is correct
@@ -60,6 +56,6 @@ function timeStart(){
     //when they enter intials, it saves to local storage, along with their score
     //lists user's scores
 
-    function endGame(){
-
-    }
+function endGame(){
+    console.log("Game Over");
+}
