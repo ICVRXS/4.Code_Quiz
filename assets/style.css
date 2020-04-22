@@ -1,9 +1,22 @@
 * {
     text-align: center;
+    margin: 0px;
 }
 
-h1 {
+#header {
     background-color: aliceblue;
     padding: 40px;
     margin-top: 0px;
+}
+
+#start-button {
+    margin: 10px;
+}
+
+#question-box {
+    margin-top: 50px;
+}
+
+#timer {
+    margin: 10px;
 }
