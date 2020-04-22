@@ -13,7 +13,7 @@ var question = document.getElementById("question");
 
 startButton.addEventListener("click", function(){
     console.log("click");
-    timeStart
+    timeStart();
 });
 
 //interval for countdown - setInterval(callback, 1000);
@@ -24,7 +24,13 @@ startButton.addEventListener("click", function(){
     //when timer reaches zero, game ends
 
 function decreaseTimer (){
-    totalTime -=1;
+    console.log("butt")
+    if (totalTime > 0){
+        totalTime-=1;
+    }else{
+        endGame();
+    }
+    timeLeft.innerHTML = totalTime
 }
 
 function timeStart(){
@@ -32,7 +38,6 @@ function timeStart(){
     setInterval(decreaseTimer, 1000);
 }
 
-timeLeft.innerHTML = timeStart
 
 //questions and answers
     //questions in an array
@@ -40,6 +45,8 @@ timeLeft.innerHTML = timeStart
     //if/else conditional for answers
     //if answer === "true" next question
     //else subtract time
+
+    
 
 //when the user clicks the answer
     //validates whether the answer is correct
@@ -52,3 +59,7 @@ timeLeft.innerHTML = timeStart
     //user is prompted with a form to submit initials
     //when they enter intials, it saves to local storage, along with their score
     //lists user's scores
+
+    function endGame(){
+
+    }
