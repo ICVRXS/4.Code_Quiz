@@ -1,9 +1,9 @@
-var question = document.getElementById("question"),
-    answer = document.getElementById("answers"),
-    startButton = document.getElementById("start-button"),
-    timeLeft = document.getElementById("timer"),
-    totalTime = 75,
-    elapsedTime = 0,
+var question = document.getElementById("question");
+    answer = document.getElementById("answers");
+    timeLeft = document.getElementById("timer");
+    startButton = document.getElementById("start-button");
+    totalTime = 75;
+    elapsedTime = 0;
 
 
 //user clicks the start button
@@ -11,6 +11,28 @@ var question = document.getElementById("question"),
     //the timer appears in place of the start button
     //start button reappears after the quiz is over
 
+startButton.addEventListener("click", function(){
+    console.log("click");
+    timeStart
+});
+
+//interval for countdown - setInterval(callback, 1000);
+    //increment elapsedTime
+    //calculate time left by subtracting totalTime from elapsedTime
+    //check to see that totalTime === elapsedTime
+    //update timeLeft in HTML (.textContent or .enterHTML???????)
+    //when timer reaches zero, game ends
+
+function timeStart(){
+    for (var i = 0; i < totalTime.length; i++){
+        
+    }
+
+    timer.setInterval(callback, 1000);
+
+}
+
+timeLeft.innerHTML = timeStart
 //questions and answers
     //questions in an array
     //possible answers in an object
@@ -23,13 +45,6 @@ var question = document.getElementById("question"),
     //false answers deduct time from the clock
     //answer is stored in local storage
     //next question prompts
-
-//interval for countdown - setInterval(callback, 1000);
-    //increment elapsedTime
-    //calculate time left by subtracting totalTime from elapsedTime
-    //check to see that totalTime === elapsedTime
-    //update timeLeft in HTML (.textContent or .enterHTML???????)
-    //when timer reaches zero, game ends
 
 //endgame functionality
     //show final score
