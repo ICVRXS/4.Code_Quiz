@@ -23,16 +23,17 @@ startButton.addEventListener("click", function(){
     //update timeLeft in HTML (.textContent or .enterHTML???????)
     //when timer reaches zero, game ends
 
+function decreaseTimer (){
+    totalTime -=1;
+}
+
 function timeStart(){
-    for (var i = 0; i < totalTime.length; i++){
-        
-    }
 
-    timer.setInterval(callback, 1000);
-
+    setInterval(decreaseTimer, 1000);
 }
 
 timeLeft.innerHTML = timeStart
+
 //questions and answers
     //questions in an array
     //possible answers in an object
