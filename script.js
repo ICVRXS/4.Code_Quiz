@@ -38,9 +38,7 @@ function timeStart(){
 }
 
 //questions and answers
-    //questions in an array
-    //possible answers in an object
-    //if/else conditional for answers
+    //if/else conditional for answers?
     //if answer === "true" next question
     //else subtract time
 
