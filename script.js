@@ -1,5 +1,8 @@
 var question = document.getElementById("question");
-var answer = document.getElementById("answers");
+var answerOne = document.getElementById("answer-one");
+var answerTwo = document.getElementById("answer-two");
+var answerThree = document.getElementById("answer-three");
+var answerFour = document.getElementById("answer-four");
 var timeLeft = document.getElementById("timer");
 var startButton = document.getElementById("start-button");
 var totalTime = 76;
@@ -14,6 +17,7 @@ var myInterval;
 startButton.addEventListener("click", function(){
     this.style.display = "none";
     timeStart();
+    quizQuestions();
 });
 
 //interval for countdown - setInterval(callback, 1000);
@@ -41,26 +45,33 @@ function timeStart(){
     //if/else conditional for answers?
     //if answer === "true" next question
     //else subtract time
+function quizQuestions(){
+    var questions = [
+        {displayQuestion: "a",
+        answerTrue: "b",
+        answerFalseOne: "c",
+        answerFalseTwo: "d",
+        answerFalseThree: "e"},
 
-var questions = [
-    {displayQuestion: "a",
-    answerTrue: "b",
-    answerFalse: "c",
-    answerFalse: "d",
-    answerFalse: "e",},
+        {displayQuestion: "a",
+        answerTrue: "b",
+        answerFalseOne: "c",
+        answerFalseTwo: "d",
+        answerFalseThree: "e"},
 
-    {displayQuestion: "a",
-    answerTrue: "b",
-    answerFalse: "c",
-    answerFalse: "d",
-    answerFalse: "e",},
+        {displayQuestion: "a",
+        answerTrue: "b",
+        answerFalseOne: "c",
+        answerFalseTwo: "d",
+        answerFalseThree: "e"},
+    ]
 
-    {displayQuestion: "a",
-    answerTrue: "b",
-    answerFalse: "c",
-    answerFalse: "d",
-    answerFalse: "e",}
-]
+    question.innerHTML = questions[0].displayQuestion;
+    answerOne.innerHTML = questions[0].answerTrue;
+    answerTwo.innerHTML = questions[0].answerFalseOne;
+    answerThree.innerHTML = questions[0].answerFalseTwo;
+    answerFour.innerHTML = questions[0].answerFalseThree;
+}
 
 //when the user clicks the answer
     //validates whether the answer is correct
