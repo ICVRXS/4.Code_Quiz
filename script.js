@@ -14,7 +14,8 @@ var score = 0;
 startButton.addEventListener("click", function(){
     this.style.display = "none";
     timeStart();
-    quizQuestions();
+    setButtons();
+    nextQuestion();
 });
 
 function decreaseTimer (){
@@ -31,70 +32,71 @@ function timeStart(){
    decreaseTimer();
 }
 
-//questions and answers
-    //if/else conditional for answers?
-    //if answer === "true" next question
-    //else subtract time, next question
+var questions = [
+    {displayQuestion: "First question",
+    answerOne: "First question answer 1",
+    answerTwo: "First question answer 2",
+    answerThree: "First question answer 3",
+    answerFour: "First question answer 4",
 
-function quizQuestions(){
-    var questions = [
-        {displayQuestion: "a",
-        answerTrue: "b",
-        answerFalseOne: "c",
-        answerFalseTwo: "d",
-        answerFalseThree: "e"},
+    answerTrue: "First question answer 1"},
 
-        {displayQuestion: "a2",
-        answerTrue: "b2",
-        answerFalseOne: "c",
-        answerFalseTwo: "d",
-        answerFalseThree: "e"},
+    {displayQuestion: "Second question",
+    answerOne: "Second question answer 1",
+    answerTwo: "Second question answer 2",
+    answerThree: "Second question answer 3",
+    answerFour: "Second question answer 4",
 
-        {displayQuestion: "a",
-        answerTrue: "b",
-        answerFalseOne: "c",
-        answerFalseTwo: "d",
-        answerFalseThree: "e"},
-    ]
+    answerTrue:"Second question answer 1"},
 
-    question.innerHTML = questions[0].displayQuestion;
-    answerOne.innerHTML = questions[0].answerTrue;
-    answerTwo.innerHTML = questions[0].answerFalseOne;
-    answerThree.innerHTML = questions[0].answerFalseTwo;
-    answerFour.innerHTML = questions[0].answerFalseThree;
+    {displayQuestion: "Third question",
+    answerOne: "Third question answer 1",
+    answerTwo: "Third question answer 2",
+    answerThree: "Third question answer 3",
+    answerFour: "Third question answer 4",
 
-    question.innerHTML = questions[1].displayQuestion;
-    answerOne.innerHTML = questions[1].answerTrue;
-    answerTwo.innerHTML = questions[1].answerFalseOne;
-    answerThree.innerHTML = questions[1].answerFalseTwo;
-    answerFour.innerHTML = questions[1].answerFalseThree;
+    answerTrue: "Third question answer 1"},
+]
 
-    question.innerHTML = questions[2].displayQuestion;
-    answerOne.innerHTML = questions[2].answerTrue;
-    answerTwo.innerHTML = questions[2].answerFalseOne;
-    answerThree.innerHTML = questions[2].answerFalseTwo;
-    answerFour.innerHTML = questions[2].answerFalseThree;
+function nextQuestion(){
+    if(currentQuestion < questions.length -1){
+        currentQuestion++;
+        question.innerHTML = questions[currentQuestion].displayQuestion;
+        answerOne.innerHTML = questions[currentQuestion].answerOne;
+        answerTwo.innerHTML = questions[currentQuestion].answerTwo;
+        answerThree.innerHTML = questions[currentQuestion].answerThree;
+        answerFour.innerHTML = questions[currentQuestion].answerFour;
+    }else{
+        endGame();
+    }
+}
 
+function setButtons(){
     answerOne.addEventListener("click", function(){
-        console.log("correct");
+        checkCorrect(this.innerText);
     });
     answerTwo.addEventListener("click", function(){
-        console.log("incorrect");
+        checkCorrect(this.innerText);
     });
     answerThree.addEventListener("click", function(){
-        console.log("incorrect");
+        checkCorrect(this.innerText);
     });
     answerFour.addEventListener("click", function(){
-        console.log("incorrect");
+        checkCorrect(this.innerText);
     });
 }
 
-//when the user clicks the answer
-    //validates whether the answer is correct
-    //false answers deduct time from the clock
-    //answer is stored in local storage
-    //next question prompts
-
+function checkCorrect(input){
+    if (input == questions[currentQuestion].answerTrue){
+        score++
+        console.log("correct");
+        console.log(score);
+        nextQuestion();
+    }else{
+        totalTime -=10;
+        nextQuestion();
+    }
+}
 //endgame functionality
     //show final score
     //user is prompted with a form to submit initials
@@ -102,6 +104,7 @@ function quizQuestions(){
     //lists user's scores
 
 function endGame(){
+    document.getElementById("question-box").style.display = "none";
     clearInterval(myInterval);
     console.log("Game Over");
 }
