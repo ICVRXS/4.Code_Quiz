@@ -44,7 +44,8 @@ function timeStart(){
 //questions and answers
     //if/else conditional for answers?
     //if answer === "true" next question
-    //else subtract time
+    //else subtract time, next question
+
 function quizQuestions(){
     var questions = [
         {displayQuestion: "a",
@@ -71,6 +72,22 @@ function quizQuestions(){
     answerTwo.innerHTML = questions[0].answerFalseOne;
     answerThree.innerHTML = questions[0].answerFalseTwo;
     answerFour.innerHTML = questions[0].answerFalseThree;
+
+    question.innerHTML = questions[1].displayQuestion;
+    answerOne.innerHTML = questions[1].answerTrue;
+    answerTwo.innerHTML = questions[1].answerFalseOne;
+    answerThree.innerHTML = questions[1].answerFalseTwo;
+    answerFour.innerHTML = questions[1].answerFalseThree;
+
+    question.innerHTML = questions[2].displayQuestion;
+    answerOne.innerHTML = questions[2].answerTrue;
+    answerTwo.innerHTML = questions[2].answerFalseOne;
+    answerThree.innerHTML = questions[2].answerFalseTwo;
+    answerFour.innerHTML = questions[2].answerFalseThree;
+
+    answerOne.addEventListener("click", function(){
+        console.log("correct");
+    });
 }
 
 //when the user clicks the answer
@@ -86,5 +103,6 @@ function quizQuestions(){
     //lists user's scores
 
 function endGame(){
+    clearInterval(myInterval);
     console.log("Game Over");
 }

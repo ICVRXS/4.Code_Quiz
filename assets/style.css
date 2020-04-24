@@ -21,3 +21,8 @@
 #timer {
     margin: 10px;
 }
+
+.answer {
+    margin: 20px 30%;
+    background-color: aliceblue;
+}
