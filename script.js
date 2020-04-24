@@ -5,27 +5,17 @@ var answerThree = document.getElementById("answer-three");
 var answerFour = document.getElementById("answer-four");
 var timeLeft = document.getElementById("timer");
 var startButton = document.getElementById("start-button");
-var totalTime = 76;
-var elapsedTime = 0;    
+var answerBtn = document.createElement("button");
+var totalTime = 76; 
 var myInterval;
-
-//user clicks the start button
-    //click event for start button which starts the quiz, prompts the first question and disappears when the quiz begins
-    //the timer appears in place of the start button
-    //start button reappears after the quiz is over
+var currentQuestion = -1;
+var score = 0;
 
 startButton.addEventListener("click", function(){
     this.style.display = "none";
     timeStart();
     quizQuestions();
 });
-
-//interval for countdown - setInterval(callback, 1000);
-    //increment elapsedTime
-    //calculate time left by subtracting totalTime from elapsedTime
-    //check to see that totalTime === elapsedTime
-    //update timeLeft in HTML (.textContent or .enterHTML???????)
-    //when timer reaches zero, game ends
 
 function decreaseTimer (){
     if (totalTime > 0){
@@ -54,8 +44,8 @@ function quizQuestions(){
         answerFalseTwo: "d",
         answerFalseThree: "e"},
 
-        {displayQuestion: "a",
-        answerTrue: "b",
+        {displayQuestion: "a2",
+        answerTrue: "b2",
         answerFalseOne: "c",
         answerFalseTwo: "d",
         answerFalseThree: "e"},
@@ -87,6 +77,15 @@ function quizQuestions(){
 
     answerOne.addEventListener("click", function(){
         console.log("correct");
+    });
+    answerTwo.addEventListener("click", function(){
+        console.log("incorrect");
+    });
+    answerThree.addEventListener("click", function(){
+        console.log("incorrect");
+    });
+    answerFour.addEventListener("click", function(){
+        console.log("incorrect");
     });
 }
 
