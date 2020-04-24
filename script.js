@@ -6,10 +6,14 @@ var answerFour = document.getElementById("answer-four");
 var timeLeft = document.getElementById("timer");
 var startButton = document.getElementById("start-button");
 var answerBtn = document.createElement("button");
+var initialForm = document.getElementById("initial-form")
+var displayScore = document.getElementById("score");
 var totalTime = 76; 
 var myInterval;
 var currentQuestion = -1;
 var score = 0;
+
+initialForm.style.display = "none";
 
 startButton.addEventListener("click", function(){
     this.style.display = "none";
@@ -89,8 +93,6 @@ function setButtons(){
 function checkCorrect(input){
     if (input == questions[currentQuestion].answerTrue){
         score++
-        console.log("correct");
-        console.log(score);
         nextQuestion();
     }else{
         totalTime -=10;
@@ -104,7 +106,9 @@ function checkCorrect(input){
     //lists user's scores
 
 function endGame(){
-    document.getElementById("question-box").style.display = "none";
     clearInterval(myInterval);
-    console.log("Game Over");
+    timeLeft.style.visibility = "hidden";
+    displayScore.innerHTML = ("Your score: " + score);
+    document.getElementById("initial-form").style.display = "block";
+    document.getElementById("question-box").style.display = "none";
 }
