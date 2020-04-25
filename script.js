@@ -13,8 +13,6 @@ var totalTime = 76;
 var myInterval;
 var currentQuestion = -1;
 var score = 0;
-var myInitials = "";
-var myScore = "";
 
 initialForm.style.display = "none";
 
@@ -111,8 +109,10 @@ function checkCorrect(input){
 function endGame(){
     document.getElementById("initials-form").addEventListener("submit", function(event){
         event.preventDefault();
-        localStorage.setItem("Initials", userInitials.myInitials);
-        localStorage.setItem("Score", score.myScore);
+        localStorage.setItem("Initials", userInitials.value);
+        localStorage.setItem("Score", score.value);
+        console.log(userInitials.value);
+        console.log(score.value);
     });
     clearInterval(myInterval);
     timeLeft.style.visibility = "hidden";
