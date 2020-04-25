@@ -8,10 +8,13 @@ var startButton = document.getElementById("start-button");
 var answerBtn = document.createElement("button");
 var initialForm = document.getElementById("initial-form")
 var displayScore = document.getElementById("score");
+var userInitials = document.getElementById("initials")
 var totalTime = 76; 
 var myInterval;
 var currentQuestion = -1;
 var score = 0;
+var myInitials = "";
+var myScore = "";
 
 initialForm.style.display = "none";
 
@@ -106,6 +109,11 @@ function checkCorrect(input){
     //lists user's scores
 
 function endGame(){
+    document.getElementById("initials-form").addEventListener("submit", function(event){
+        event.preventDefault();
+        localStorage.setItem("Initials", userInitials.myInitials);
+        localStorage.setItem("Score", score.myScore);
+    });
     clearInterval(myInterval);
     timeLeft.style.visibility = "hidden";
     displayScore.innerHTML = ("Your score: " + score);
