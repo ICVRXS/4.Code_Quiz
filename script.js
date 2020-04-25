@@ -14,8 +14,10 @@ var myInterval;
 var currentQuestion = -1;
 var score = 0;
 
+//Hides initial form when page loads
 initialForm.style.display = "none";
 
+//Start button
 startButton.addEventListener("click", function(){
     this.style.display = "none";
     timeStart();
@@ -23,6 +25,7 @@ startButton.addEventListener("click", function(){
     nextQuestion();
 });
 
+//Timer
 function decreaseTimer (){
     if (totalTime > 0){
         totalTime-=1;
@@ -37,6 +40,7 @@ function timeStart(){
    decreaseTimer();
 }
 
+//Questions and answers arranged into anonymous objects within an array
 var questions = [
     {displayQuestion: "First question",
     answerOne: "First question answer 1",
@@ -63,6 +67,8 @@ var questions = [
     answerTrue: "Third question answer 1"},
 ]
 
+//nextQuestion function determines which item is currently being displayed within the array
+//Once all the questions have been cleared, it runs the endGame function
 function nextQuestion(){
     if(currentQuestion < questions.length -1){
         currentQuestion++;
@@ -76,6 +82,8 @@ function nextQuestion(){
     }
 }
 
+//Sets event listeners for each answer element
+//calls on checkCorrect function to see if input is correct or not
 function setButtons(){
     answerOne.addEventListener("click", function(){
         checkCorrect(this.innerText);
@@ -91,6 +99,9 @@ function setButtons(){
     });
 }
 
+//Checks whether the answer is correct or not
+//A correct answer adds a point to the score
+//False answers subtract 10 seconds from the timer
 function checkCorrect(input){
     if (input == questions[currentQuestion].answerTrue){
         score++
@@ -100,12 +111,9 @@ function checkCorrect(input){
         nextQuestion();
     }
 }
-//endgame functionality
-    //show final score
-    //user is prompted with a form to submit initials
-    //when they enter intials, it saves to local storage, along with their score
-    //lists user's scores
-
+//Endgame
+//Stops and hides the timer
+//Shows score and asks for user initials
 function endGame(){
     document.getElementById("initials-form").addEventListener("submit", function(event){
         event.preventDefault();
