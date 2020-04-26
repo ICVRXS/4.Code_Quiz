@@ -13,6 +13,8 @@ var totalTime = 76;
 var myInterval;
 var currentQuestion = -1;
 var score = 0;
+var myInitials;
+var myScore;
 
 //Hides initial form when page loads
 initialForm.style.display = "none";
@@ -41,30 +43,31 @@ function timeStart(){
 }
 
 //Questions and answers arranged into anonymous objects within an array
+//True answer listed on bottom of each object
 var questions = [
-    {displayQuestion: "First question",
-    answerOne: "First question answer 1",
-    answerTwo: "First question answer 2",
-    answerThree: "First question answer 3",
-    answerFour: "First question answer 4",
+    {displayQuestion: "Who recieved the coveted 'Golden Turkey' award for worst director in the 1980 book 'The Golden Turkey Awards'?",
+    answerOne: "Quentin Tarantino",
+    answerTwo: "Ed Wood",
+    answerThree: "Bert I. Gordon",
+    answerFour: "George Lucas",
 
-    answerTrue: "First question answer 1"},
+    answerTrue: "Ed Wood"},
 
-    {displayQuestion: "Second question",
-    answerOne: "Second question answer 1",
-    answerTwo: "Second question answer 2",
-    answerThree: "Second question answer 3",
-    answerFour: "Second question answer 4",
+    {displayQuestion: "In 'The Golden Turkey Awards', one of the nominated films was made up. Which film is the fake one?",
+    answerOne: "Dog of Norway",
+    answerTwo: "They Saved Hitler's Brain",
+    answerThree: "Polybius",
+    answerFour: "Troll 2",
 
-    answerTrue:"Second question answer 1"},
+    answerTrue:"Dog of Norway"},
 
-    {displayQuestion: "Third question",
-    answerOne: "Third question answer 1",
-    answerTwo: "Third question answer 2",
-    answerThree: "Third question answer 3",
-    answerFour: "Third question answer 4",
+    {displayQuestion: "Despite being nominated for a Golden Globe for his performance in this film, both Paul Newman and 'The Golden Turkey Awards' called it the most embarassing movie debut for an actor",
+    answerOne: "Somebody Up There Likes Me",
+    answerTwo: "The Color of Money",
+    answerThree: "Plan 9 from Outer Space",
+    answerFour: "The Silver Chalice",
 
-    answerTrue: "Third question answer 1"},
+    answerTrue: "The Silver Chalice"},
 ]
 
 //nextQuestion function determines which item is currently being displayed within the array
@@ -111,14 +114,24 @@ function checkCorrect(input){
         nextQuestion();
     }
 }
+
 //Endgame
 //Stops and hides the timer
 //Shows score and asks for user initials
 function endGame(){
     document.getElementById("initials-form").addEventListener("submit", function(event){
         event.preventDefault();
-        localStorage.setItem("Initials", userInitials.value);
-        localStorage.setItem("Score", score.value);
+        if(localStorage.getItem("initials" === null && "score" === null)){
+            myInitials = [];
+            myScore =[];
+        }else{
+            myInitials = JSON.parse(localStorage.getItem("initials"));
+            myScore = JSON.parse(localStorage.getItem("score"));
+        }
+        myInitials.push("initials");
+        myScore.push("score");
+        localStorage.setItem("initials", userInitials.value);
+        localStorage.setItem("score", score.value);
         console.log(userInitials.value);
         console.log(score.value);
     });
