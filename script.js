@@ -9,7 +9,7 @@ var answerBtn = document.createElement("button");
 var initialForm = document.getElementById("initial-form")
 var displayScore = document.getElementById("score");
 var userInitials = document.getElementById("initials")
-var totalTime = 76; 
+var totalTime = 41; 
 var myInterval;
 var currentQuestion = -1;
 var score = 0;
@@ -121,20 +121,20 @@ function checkCorrect(input){
 function endGame(){
     document.getElementById("initials-form").addEventListener("submit", function(event){
         event.preventDefault();
-        if(localStorage.getItem("initials" === null && "score" === null)){
+        localStorage.setItem("initials", userInitials.value); //-------------grabs value of initials
+        localStorage.setItem("score", score.value); //-----------------------grabs value of score
+        console.log(userInitials.value); //----------------------------------logs initials entered by user
+        console.log(score.value); //-----------------------------------------logs 'undefined' for some reason?
+        if(localStorage.getItem("initials" === null && "score" === null)){ //if the user hasn't stored a score yet, the array is empty
             myInitials = [];
-            myScore =[];
-        }else{
-            myInitials = JSON.parse(localStorage.getItem("initials"));
-            myScore = JSON.parse(localStorage.getItem("score"));
+            myScore = [];
+        }else{ //converts data into an object
+            myInitials = JSON.parse(localStorage.getItem("initials")); //alerted with "Uncaught SyntaxError: Unexpected token c in JSON at position 0
+            myScore = JSON.parse(localStorage.getItem("score"));       //JSON.parse (<anonymous>) at HTMLFormElement.<anonymous>"
         }
-        myInitials.push("initials");
-        myScore.push("score");
-        localStorage.setItem("initials", userInitials.value);
-        localStorage.setItem("score", score.value);
-        console.log(userInitials.value);
-        console.log(score.value);
-    });
+        myInitials.push("initials"); //--------------------------------------pushes objects into their respective arrays
+        myScore.push("score"); //in writing out these comments, I realize it's redundant to have two arrays with separate objects for scores
+    }); //-----------------------will refactor once I figure out how to get them to even push into the arrays in the first place
     clearInterval(myInterval);
     timeLeft.style.visibility = "hidden";
     displayScore.innerHTML = ("Your score: " + score);
