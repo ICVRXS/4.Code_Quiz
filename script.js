@@ -134,9 +134,9 @@ function endGame(){
             myScore = JSON.stringify(localStorage.getItem("score"));
         }
         var thankYou = document.createElement("p");
-        var text = document.createTextNode("Thank you for playing")
-        thankYou.appendChild(text)
-        initialForm.appendChild(thankYou)
+        var text = document.createTextNode("Thank you for playing");
+        thankYou.appendChild(text);
+        initialForm.appendChild(thankYou);
     });
     clearInterval(myInterval);
     timeLeft.style.visibility = "hidden";
