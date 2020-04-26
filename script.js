@@ -7,6 +7,7 @@ var timeLeft = document.getElementById("timer");
 var startButton = document.getElementById("start-button");
 var answerBtn = document.createElement("button");
 var initialForm = document.getElementById("initial-form")
+var questionBox = document.getElementById("question-box")
 var displayScore = document.getElementById("score");
 var userInitials = document.getElementById("initials")
 var totalTime = 41; 
@@ -15,6 +16,7 @@ var currentQuestion = -1;
 var score = 0;
 var myInitials;
 var myScore;
+var userScore;
 
 //Hides initial form when page loads
 initialForm.style.display = "none";
@@ -131,12 +133,14 @@ function endGame(){
             myInitials = JSON.stringify(localStorage.getItem("initials"));
             myScore = JSON.stringify(localStorage.getItem("score"));
         }
-        myInitials.push("initials");
-        myScore.push("score");
+        var thankYou = document.createElement("p");
+        var text = document.createTextNode("Thank you for playing")
+        thankYou.appendChild(text)
+        initialForm.appendChild(thankYou)
     });
     clearInterval(myInterval);
     timeLeft.style.visibility = "hidden";
     displayScore.innerHTML = ("Your score: " + score);
-    document.getElementById("initial-form").style.display = "block";
-    document.getElementById("question-box").style.display = "none";
+    initialForm.style.display = "block";
+    questionBox.style.display = "none";
 }
